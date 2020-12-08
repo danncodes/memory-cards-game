@@ -1,8 +1,51 @@
 h1 {
-	background-color: aqua;
+	text-align: center;
+	font-family: Helvetica, sans-serif;
+	margin: 20px;
+	padding: 20px;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: 200px 200px 200px 200px;
+	grid-gap: 20px;
 }
 
 .btn {
 	height: 200px;
 	width: 200px;
+	flex-basis: 25%;
+	border-radius: 15px;
+}
+
+.blue {
+	background-color: #1e96fc;
+}
+
+.red {
+	background-color: #ff2c55;
+}
+
+.yellow {
+	background-color: #fcf300;
+}
+
+.green {
+	background-color: #99f7ab;
+}
+
+.purple {
+	background-color: #c2aff0;
+}
+
+.pink {
+	background-color: #fc60a8;
+}
+
+.orange {
+	background-color: #ec9f05;
+}
+
+.grey {
+	background-color: #686868;
 }
