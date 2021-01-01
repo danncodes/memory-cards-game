@@ -2,7 +2,7 @@
 
 let container = document.querySelector('.container');
 
-container.innerHTML = `
+container.innerHTML += `
 <div class="flip-card grey">
 	<div class="flip-card-inner grey">
 		<div class="flip-card-front grey">
