@@ -1,8 +1,9 @@
 // Query Selectors
 
 let container = document.querySelector('.container');
+let body = document.querySelector('body');
 
-container.innerHTML = `
+container.innerHTML += `
 <div class="flip-card grey">
 	<div class="flip-card-inner grey">
 		<div class="flip-card-front grey">
@@ -149,3 +150,18 @@ container.innerHTML = `
 	</div>
 </div>
 `;
+
+// Functions
+
+function selectCard(e) {
+	// Selected Card = Card Clicked
+	let selectedCard = e.target;
+
+	// Flip Card
+	if (selectedCard.className.includes('card')) {
+		selectedCard.parentElement.classList.toggle('flip');
+	}
+}
+
+// Event Listeners
+body.addEventListener('click', selectCard);
