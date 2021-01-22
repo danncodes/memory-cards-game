@@ -32,153 +32,22 @@ function shuffleColors(allColors) {
 }
 shuffleColors(allColors);
 
-container.innerHTML += `
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
+function buildGame() {
+	allColors.forEach(color => {
+		container.innerHTML += `
+<div class="flip-card ${color}">
+	<div class="flip-card-inner ${color}">
+		<div class="flip-card-front ${color}">
 			<h2>Daniel Mensah</h2>
 			<i class="fab fa-linkedin"></i>
 		</div>
-		<div class="flip-card-back"></div>
+		<div class="flip-card-back ${color}"></div>
 	</div>
-</div>
+</div>`;
+	});
+}
 
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-bac"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back "></div>
-	</div>
-</div>
-<div class="flip-card">
-	<div class="flip-card-inner">
-		<div class="flip-card-front">
-			<h2>Daniel Mensah</h2>
-			<i class="fab fa-linkedin"></i>
-		</div>
-		<div class="flip-card-back"></div>
-	</div>
-</div>
-`;
+buildGame();
 
 // Functions
 
