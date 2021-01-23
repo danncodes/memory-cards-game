@@ -117,3 +117,7 @@ h1 {
 .fab {
 	font-size: 1.5rem;
 }
+
+.matched {
+	pointer-events: none;
+}

@@ -15,6 +15,8 @@ let colors = [
 ];
 
 let arrayLength = 16;
+let yourMatches = 0;
+let matchesForCompletion = arrayLength / 2;
 
 // Duplicate Colors
 let allColors = [
@@ -22,20 +24,21 @@ let allColors = [
 	...colors.slice(0, arrayLength / 2)
 ];
 
-console.log(allColors);
+console.log(allColors); // Before Shuffle - Remove
 
 // Functions
 
 // Shuffle Array
 function shuffleColors(allColors) {
 	allColors = allColors.sort((a, b) => 0.5 - Math.random());
-	console.log(allColors);
+	console.log(allColors); // After Shuffle - Remove
 	return allColors;
 }
 shuffleColors(allColors);
 
 // Build Game
 function buildGame() {
+	container.innerHTML = '';
 	allColors.forEach(color => {
 		container.innerHTML += `
 <div class="flip-card ${color}">
@@ -68,8 +71,6 @@ function selectCard(e) {
 	) {
 		selectedCard.parentElement.classList.toggle('flip');
 		cards.firstCard = selectedCard;
-		console.log(cards.firstCard, 'firstCard');
-		console.log(cards);
 	}
 
 	// Second Card
@@ -95,6 +96,10 @@ function selectCard(e) {
 // Comparison
 function comparisonCheck(firstCard, secondCard) {
 	if (firstCard.classList[1] === secondCard.classList[1]) {
+		firstCard.parentElement.parentElement.classList.add('matched');
+		secondCard.parentElement.parentElement.classList.add('matched');
+		yourMatches++;
+		gameCompletedCheck();
 		return;
 	} else {
 		setTimeout(() => {
@@ -104,5 +109,24 @@ function comparisonCheck(firstCard, secondCard) {
 	}
 }
 
+let allCards = Array.from(container.children);
+
+// Reset Game
+function gameCompletedCheck() {
+	if (yourMatches === matchesForCompletion) {
+		setTimeout(() => {
+			allCards.forEach(card => {
+				card.classList.remove('matched');
+				card.firstChild.nextSibling.classList.toggle('flip');
+			});
+		}, 3000);
+
+		setTimeout(() => {
+			shuffleColors(allColors);
+			buildGame();
+			yourMatches = 0;
+		}, 4000);
+	}
+}
 // Event Listeners
 container.addEventListener('click', selectCard);
