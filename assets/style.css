@@ -19,10 +19,17 @@ body {
 .name {
 	font-family: 'Yusei Magic', sans-serif;
 	font-weight: 300;
+	pointer-events: none;
+}
+
+.fa-linkedin {
+	pointer-events: none;
 }
 /* Wrapper */
 .wrapper {
 	display: flex;
+	flex-direction: column;
+	text-align: center;
 	justify-content: center;
 	align-items: center;
 }
@@ -32,12 +39,10 @@ select {
 	box-shadow: 5px 5px 25px white;
 }
 
-h1 {
-	margin: 0.5rem;
-	padding: 0.5rem;
+.head {
+	margin: 0.2rem;
+	padding: 0.2rem;
 	text-align: center;
-	font-family: Helvetica, sans-serif;
-	font-family: 'Open Sans', sans-serif;
 }
 
 .container {
@@ -87,8 +92,8 @@ h1 {
 
 .flip-card {
 	background-color: transparent;
-	width: 200px;
-	height: 200px;
+	width: 185px;
+	height: 185px;
 	perspective: 1000px;
 	border-radius: 10px;
 	flex-wrap: wrap;
@@ -97,6 +102,7 @@ h1 {
 	align-items: center;
 	margin: 10px;
 	box-shadow: 5px 5px 25px #686868;
+	cursor: pointer;
 }
 
 .flip-card-inner {
@@ -172,4 +178,58 @@ span {
 .moves-span {
 	margin: 0;
 	padding: 0.3rem;
+}
+
+.container-wrapper {
+	display: flex;
+	padding-right: 5rem;
+	height: 100vh;
+}
+.popup-modal {
+	width: 70%;
+	background: white;
+	height: 50vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem;
+	margin: 2rem;
+	align-items: center;
+	background: transparent;
+}
+
+.popup-modal h1 {
+	margin: 2rem;
+	margin-bottom: 0;
+	padding: 0.5rem;
+	text-align: center;
+}
+.popup-wrapper {
+	margin: 2rem;
+	width: 100%;
+	height: 70vh;
+	background: transparent;
+	box-shadow: 10px 5px 50px white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+}
+
+.moves-h3 {
+	text-align: center;
+}
+
+.play-again-btn {
+	margin: 2rem;
+	padding: 0.6rem;
+	background: transparent;
+	box-shadow: 10px 5px 15px white;
+	border: none;
+	cursor: pointer;
+}
+
+.play-again-btn:hover {
+	box-shadow: 10px 5px 25px #686868;
 }
