@@ -3,8 +3,9 @@
 let container = document.querySelector('.container');
 let select = document.querySelector('select');
 let moves = document.querySelector('.moves-span');
-
+let popUp = document.querySelector('popup-modal');
 let restartBtn = document.querySelector('.fa-sync');
+let wrapper = document.querySelector('.wrapper');
 
 // Array of Colors
 let colors = [
@@ -140,11 +141,25 @@ function reset() {
 
 function gameCompletedCheck() {
 	if (yourMatches === matchesForCompletion) {
-		reset();
+		container.innerHTML = `<div class="popup-wrapper">
+			<div class="popup-modal">
+				<h1>Congratulations!</h1>
+				<h1>🎉🎉🎉🎉🎉</h1>
+				<h1>Your are Winner!🥳</h1>
+				<button class="play-again-btn">Play Again 😁</button>
+			</div>
+		</div>;`;
+
+		let playAgainBtn = document.querySelector('.play-again-btn');
+		playAgainBtn.addEventListener('click', () => {
+			reset();
+		});
 	}
 }
 
 // Event Listeners
+
+// On Card Selection
 container.addEventListener('click', selectCard);
 
 // On Select Option Change
@@ -177,6 +192,7 @@ select.addEventListener('change', e => {
 	});
 });
 
+// On Restart Button Click
 restartBtn.addEventListener('click', () => {
 	allCards.forEach(card => {
 		card.classList.remove('matched');
