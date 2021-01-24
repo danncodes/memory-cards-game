@@ -1,6 +1,10 @@
 // Query Selectors
 
 let container = document.querySelector('.container');
+let select = document.querySelector('select');
+let moves = document.querySelector('.moves-span');
+
+let restartBtn = document.querySelector('.fa-sync');
 
 // Array of Colors
 let colors = [
@@ -14,7 +18,7 @@ let colors = [
 	'blue'
 ];
 
-let arrayLength = 16;
+let arrayLength = select.value;
 let yourMatches = 0;
 let matchesForCompletion = arrayLength / 2;
 
@@ -24,14 +28,11 @@ let allColors = [
 	...colors.slice(0, arrayLength / 2)
 ];
 
-console.log(allColors); // Before Shuffle - Remove
-
 // Functions
 
 // Shuffle Array
 function shuffleColors(allColors) {
 	allColors = allColors.sort((a, b) => 0.5 - Math.random());
-	console.log(allColors); // After Shuffle - Remove
 	return allColors;
 }
 shuffleColors(allColors);
@@ -44,23 +45,21 @@ function buildGame() {
 <div class="flip-card ${color}">
 	<div class="flip-card-inner ${color}">
 		<div class="flip-card-front ${color}">
-			<h2>Daniel Mensah</h2>
+			<h2 class ='name'>Daniel Mensah</h2>
 			<i class="fab fa-linkedin"></i>
 		</div>
 		<div class="flip-card-back ${color}"></div>
+		
 	</div>
 </div>`;
 	});
 }
-
 buildGame();
 
 // Cards Default Value
 let cards = { firstCard: null, secondCard: null }; // Cards is a object with null value
 
 function selectCard(e) {
-	// Selected Card = Card Clicked
-
 	selectedCard = e.target;
 
 	// First Card
@@ -71,6 +70,13 @@ function selectCard(e) {
 	) {
 		selectedCard.parentElement.classList.toggle('flip');
 		cards.firstCard = selectedCard;
+
+		// Ensures the same Card Cannot be picked Twice
+	} else if (
+		(cards.firstCard != null && e.target === cards.firstCard.parentElement) ||
+		(cards.firstCard != null && e.target === cards.firstCard)
+	) {
+		return;
 	}
 
 	// Second Card
@@ -85,6 +91,9 @@ function selectCard(e) {
 
 		// Compare Cards
 		comparisonCheck(cards.firstCard, cards.secondCard);
+
+		// Moves Counter
+		moves.innerText++;
 
 		// Reset Cards Value
 		cards.firstCard = null;
@@ -112,21 +121,70 @@ function comparisonCheck(firstCard, secondCard) {
 let allCards = Array.from(container.children);
 
 // Reset Game
+
+function reset() {
+	setTimeout(() => {
+		allCards.forEach(card => {
+			card.classList.remove('matched');
+			card.firstChild.nextSibling.classList.toggle('flip');
+		});
+	}, 1000);
+
+	setTimeout(() => {
+		shuffleColors(allColors);
+		buildGame();
+		yourMatches = 0;
+		moves.innerText = 0;
+	}, 2000);
+}
+
 function gameCompletedCheck() {
 	if (yourMatches === matchesForCompletion) {
-		setTimeout(() => {
-			allCards.forEach(card => {
-				card.classList.remove('matched');
-				card.firstChild.nextSibling.classList.toggle('flip');
-			});
-		}, 3000);
-
-		setTimeout(() => {
-			shuffleColors(allColors);
-			buildGame();
-			yourMatches = 0;
-		}, 4000);
+		reset();
 	}
 }
+
 // Event Listeners
 container.addEventListener('click', selectCard);
+
+// On Select Option Change
+select.addEventListener('change', e => {
+	allCards = Array.from(container.children);
+
+	cards.firstCard = null;
+	cards.secondCard = null;
+	arrayLength = select.value;
+	allColors = [
+		...colors.slice(0, arrayLength / 2),
+		...colors.slice(0, arrayLength / 2)
+	];
+
+	matchesForCompletion = arrayLength / 2;
+	yourMatches = 0;
+	moves.innerText = 0;
+
+	// Replicate Reset Function without the Timeout
+
+	allCards.forEach(card => {
+		if (card.className.includes('matched')) {
+			card.classList.remove('matched');
+			console.log('card.firstChild.nextSibling');
+			card.firstChild.nextSibling.classList.toggle('flip');
+		}
+
+		shuffleColors(allColors);
+		buildGame();
+	});
+});
+
+restartBtn.addEventListener('click', () => {
+	allCards.forEach(card => {
+		card.classList.remove('matched');
+		card.firstChild.nextSibling.classList.toggle('flip');
+	});
+
+	shuffleColors(allColors);
+	buildGame();
+	yourMatches = 0;
+	moves.innerText = 0;
+});
