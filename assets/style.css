@@ -1,8 +1,42 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Yusei Magic', sans-serif;
+	background: linear-gradient(to right top, #65dfc9, #6cbdeb);
+	text-shadow: 5px 5px 10px white;
+}
+
+.container {
+	background: transparent;
+	border-radius: 20px;
+	margin-bottom: 1rem;
+}
+
+.name {
+	font-family: 'Yusei Magic', sans-serif;
+	font-weight: 300;
+}
+/* Wrapper */
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+select {
+	width: 5rem;
+	margin: 2rem;
+	box-shadow: 5px 5px 25px white;
+}
+
 h1 {
+	margin: 0.5rem;
+	padding: 0.5rem;
 	text-align: center;
 	font-family: Helvetica, sans-serif;
-	margin: 20px;
-	padding: 20px;
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -62,6 +96,7 @@ h1 {
 	justify-content: center;
 	align-items: center;
 	margin: 10px;
+	box-shadow: 5px 5px 25px #686868;
 }
 
 .flip-card-inner {
@@ -73,12 +108,7 @@ h1 {
 	transform-style: preserve-3d;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
-	/* transform: rotateY(180deg); */
 }
-
-/* .flip-card:hover .flip-card-inner {
-	transform: rotateY(180deg);
-} */
 
 .flip {
 	transform: rotateY(180deg);
@@ -112,6 +142,7 @@ h1 {
 	color: white;
 	transform: rotateY(180deg);
 	border-radius: 10px;
+	pointer-events: none;
 }
 
 .fab {
@@ -120,4 +151,25 @@ h1 {
 
 .matched {
 	pointer-events: none;
+}
+
+.moves {
+	text-align: center;
+}
+
+h3 {
+	display: inline;
+}
+
+.fa-sync {
+	margin: 2rem;
+	cursor: pointer;
+}
+
+span {
+	padding: 1rem;
+}
+.moves-span {
+	margin: 0;
+	padding: 0.3rem;
 }
